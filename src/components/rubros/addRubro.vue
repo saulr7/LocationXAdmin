@@ -15,8 +15,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Url Imagen:</label>
-                    <input type="text" class="form-control" id="NombreCiudad" placeholder="Url Imagen" v-model="rubro.UrlImagen">
+
+                    <select class="custom-select" v-model="rubro.UrlImagen">
+                        <option v-bind:value="imagen.Nombre" v-for="(imagen, index) in rubrosImagenes" :key="`entidad-${index}`" >
+                                {{imagen.Id}}
+                            </option>
+                    </select>
+
+                    <!-- <label for="formGroupExampleInput">Url Imagen:</label>
+                    <input type="text" class="form-control" id="NombreCiudad" placeholder="Url Imagen" v-model="rubro.UrlImagen"> -->
                 </div>
 
                 <div class="row mb-4">
@@ -52,6 +59,8 @@ export default {
                     FechaAgregado : + new Date(),
                     UrlImagen : ""
                 },
+            rubrosImagenes : [],
+            rubroImagenSelected : ""
         }
     },
     methods :
@@ -79,6 +88,24 @@ export default {
 
 
         },
+        obtener_imagenes_rubros()
+        {
+            database().ref("/Imagenes/Rubros").on("value", (snapshot)=>
+            {
+                this.rubrosImagenes = []
+                snapshot.forEach(imagen=> {
+                    console.log(imagen.key, imagen.val());
+                    this.rubrosImagenes.push(
+                        {
+                            Id : imagen.key,
+                            Nombre : imagen.val()
+                        })
+                });
+                this.cargando = false
+            }, (error)=>{
+                this.cargando = false
+            })
+        },
 
         validar_datos_rubro()
         {
@@ -95,6 +122,10 @@ export default {
             this.rubro.UrlImagen = "";
         }
 
+    },
+    mounted()
+    {
+        this.obtener_imagenes_rubros()
     }
 
     

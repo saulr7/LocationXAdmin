@@ -198,7 +198,12 @@ export default {
                 if (result.value) {
                     database().ref("/SubRubros/"+subRubro).child(categoria).remove().
                     then(() =>{
-                        this.$swal("Poof! Rubro elimado!", {  icon: "success", });
+                        database().ref('/Negocios').child(categoria).remove().
+                        then(()=>
+                        {
+                            this.$swal("Poof! Rubro elimado!", {  icon: "success", });
+
+                        })
                     })
                     .catch((error)=>{
                         this.$swal.fire(error, 'Error!',  'error' )

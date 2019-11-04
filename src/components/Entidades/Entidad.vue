@@ -208,7 +208,7 @@
                                                 </p>
                                             </div>
                                             <div v-if="editarEntidad" >
-                                                <input class="form-control" type="number" placeholder="Longitud" v-model="entidad.Cordenadas.Longitud">
+                                                <input class="form-control" type="text" placeholder="Longitud" v-model="entidad.Cordenadas.Longitud">
                                             </div>                                                                        
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                                                 </p>
                                             </div>
                                             <div v-if="editarEntidad" >
-                                                <input class="form-control" type="number" placeholder="Longitud" v-model="entidad.Cordenadas.Latitud">
+                                                <input class="form-control" type="text" placeholder="Longitud" v-model="entidad.Cordenadas.Latitud">
                                             </div>                                                                        
                                         </div>
                                     </div>

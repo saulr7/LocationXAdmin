@@ -172,12 +172,12 @@ export default {
             this.agregarNuevo = false;
             database().ref("/SubRubros/"+this.rubroSelected+"/"+this.nuevoSubRubro).set(subRubroObjeto).then(()=>
             {
-                database().ref("/Negocios/"+this.nuevoSubRubro).set(subRubroObjeto).then(()=>
-                {
                 this.$swal("SubRubro Agregado!", {  icon: "success", });
                 this.agregarNuevo = false;
 
-                })
+                // database().ref("/Negocios/"+this.nuevoSubRubro).set(subRubroObjeto).then(()=>
+                // {
+                // })
             })
         },
         eliminar_subRubro(subRubro, categoria)

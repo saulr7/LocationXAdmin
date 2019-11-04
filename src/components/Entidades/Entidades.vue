@@ -50,7 +50,7 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-1">
-                                            <i class="fa fa-phone"> </i>
+                                            <i class="fa fa-card"> </i>
                                         </div>
                                         <div class="col">
                                                 <p class="text-left">

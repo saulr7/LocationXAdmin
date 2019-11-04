@@ -310,8 +310,8 @@ export default {
 
                 this.nuevaEntidad.Telefonos = this.telefonos;
 
-                console.log(this.nuevaEntidad)
-                database().ref("/Entidades/"+ this.nuevaEntidad.Nombre.replace(" ", "") ).set ( this.nuevaEntidad )
+                
+                database().ref("/Entidades/"+ this.nuevaEntidad.Nombre.replace(/\s/g,'') ).set ( this.nuevaEntidad )
                 .then(()=>
                 {
                     this.crearEntidadEnNegocios();
@@ -345,7 +345,7 @@ export default {
             var entidadNegocio = {
                     Descripcion : this.nuevaEntidad.Descripcion,
                     Nombre : this.nuevaEntidad.Nombre,
-                    Entidad : this.nuevaEntidad.Nombre.replace(" ", ""),
+                    Entidad : this.nuevaEntidad.Nombre.replace(/\s/g,''),
                     UrlImagen : " "
             }
 
